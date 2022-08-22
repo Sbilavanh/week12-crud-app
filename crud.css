@@ -1,14 +1,11 @@
 body {
-    background-image: url('365722.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+    background-color: #b1a8af;
 }
 
 table {
     width: 80%;
     margin: 40px auto;
-    background: rgb(220, 91, 177);
+    background: rgb(198, 198, 198);
 }
 
 table.list {
@@ -24,7 +21,7 @@ td {
 
 tr:nth-child(even),
 table.list thread>tr {
-    background-color: rgb(198, 116, 192);
+    background-color: rgb(161, 161, 161);
 }
 
 
@@ -72,5 +69,5 @@ button {
 }
 
 button:hover {
-    background: #ff9ce8;
+    background: #b1a8af;
 }

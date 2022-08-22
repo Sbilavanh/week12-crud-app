@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Race Roster</title>
+    <title>Crud</title>
 </head>
 
 <link rel="stylesheet" href="crud.css">
@@ -16,18 +16,16 @@
             <td>
                 <form autocomplete="off" onsubmit="onFormSubmit()">
                     <div>
-                        <label for="productCode">Vehicles</label>
-                        <input type="text" name="name" id="name">
+                        <label for="vehicle">Vehicle</label>
+                        <input type="text" name="vehicle" id="vehicle">
                     </div>
                     <div>
-                        <label for="product">Course</label>
-                        <input type="text" name="type" id="type">
+                        <label for="course">Course</label>
+                        <input type="text" name="course" id="course">
                     </div>
                     <div>
-                        <label for="qty">Class</label>
-                        <input type="text" name="role" id="role">
-                    </div>
-                    <div>
+                        <label for="class">Class</label>
+                        <input type="text" name="class" id="class">
                     </div>
 
                     <div class="form_action--button">
@@ -37,12 +35,12 @@
                 </form>
 
             <td>
-                <table id="menuSelect">
+                <table id="vehicleSelect">
                     <thead>
                         <tr>
-                            <th>Vehicles</th>
+                            <th>Vehicle</th>
                             <th>Course</th>
-                            <th>class</th>
+                            <th>Class</th>
                         </tr>
                     </thead>
                     <tbody>
