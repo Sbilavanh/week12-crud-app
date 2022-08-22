@@ -17,7 +17,7 @@ function readFormData() {
     var formData = {};
     formData["Vehicles"] = document.getElementById("Vehicles").value;
     formData["Course"] = document.getElementById("Course").value;
-    formData["cw/ccw"] = document.getElementById("cw/ccw").value;
+    formData["Class"] = document.getElementById("Class").value;
     return formData;
 }
 
@@ -30,7 +30,7 @@ function insertNewRecord(data) {
     cell2 = newRow.insertCell(1);
     cell2.innerHTML = data.Course;
     cell3 = newRow.insertCell(2);
-    cell3.innerHTML = data.cw / ccw;
+    cell3.innerHTML = data.Class;
     cell4 = newRow.insertCell(4);
     cell4.innerHTML = `<button onClick="onEdit(this)">Edit</button> <button onClick="onDelete(this)">Delete</button>`;
 }
@@ -40,12 +40,12 @@ function onEdit(td) {
     selectedRow = td.parentElement.parentElement;
     document.getElementById("Vehicle").value = selectedRow.cells[0].innerHTML;
     document.getElementById("Course").value = selectedRow.cells[1].innerHTML;
-    document.getElementById("cw/ccw").value = selectedRow.cells[2].innerHTML;
+    document.getElementById("Class").value = selectedRow.cells[2].innerHTML;
 }
 function updateRecord(formData) {
     selectedRow.cells[0].innerHTML = formData.Vehicles;
     selectedRow.cells[1].innerHTML = formData.Course;
-    selectedRow.cells[2].innerHTML = formData.cw / ccw;
+    selectedRow.cells[2].innerHTML = formData.Class;
 }
 
 
@@ -61,7 +61,7 @@ function onDelete(td) {
 function resetForm() {
     document.getElementById("Vehicle").value = '';
     document.getElementById("Course").value = '';
-    document.getElementById("cw/ccw").value = '';
+    document.getElementById("Class").value = '';
     selectedRow = null;
 }
 
