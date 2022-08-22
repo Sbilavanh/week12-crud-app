@@ -1,92 +1,67 @@
-class House {
-    constructor(name) {
-        this.name = name;
-        this.rooms = [];
-    }
+var selectedRow = null
 
-    addRoom(name, area) {
-        this.rooms.push(new Room(name, area));
+function onFormSubmit(e) {
+    event.preventDefault();
+    var formData = readFormData();
+    if (selectedRow == null) {
+        insertNewRecord(formData);
+    }
+    else {
+        updateRecord(formData);
+    }
+    resetForm();
+}
+
+
+function readFormData() {
+    var formData = {};
+    formData["Vehicles"] = document.getElementById("Vehicles").value;
+    formData["Course"] = document.getElementById("Course").value;
+    formData["cw/ccw"] = document.getElementById("cw/ccw").value;
+    return formData;
+}
+
+
+function insertNewRecord(data) {
+    var table = document.getElementById("menuSelect").getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow(table.length);
+    cell1 = newRow.insertCell(0);
+    cell1.innerHTML = data.Vehicles;
+    cell2 = newRow.insertCell(1);
+    cell2.innerHTML = data.Course;
+    cell3 = newRow.insertCell(2);
+    cell3.innerHTML = data.cw / ccw;
+    cell4 = newRow.insertCell(4);
+    cell4.innerHTML = `<button onClick="onEdit(this)">Edit</button> <button onClick="onDelete(this)">Delete</button>`;
+}
+
+
+function onEdit(td) {
+    selectedRow = td.parentElement.parentElement;
+    document.getElementById("Vehicle").value = selectedRow.cells[0].innerHTML;
+    document.getElementById("Course").value = selectedRow.cells[1].innerHTML;
+    document.getElementById("cw/ccw").value = selectedRow.cells[2].innerHTML;
+}
+function updateRecord(formData) {
+    selectedRow.cells[0].innerHTML = formData.Vehicles;
+    selectedRow.cells[1].innerHTML = formData.Course;
+    selectedRow.cells[2].innerHTML = formData.cw / ccw;
+}
+
+
+function onDelete(td) {
+    if (confirm('Do you want to remove this?')) {
+        row = td.parentElement.parentElement;
+        document.getElementById('menuSelect').deleteRow(row.rowIndex);
+        resetForm();
     }
 }
 
-class Room {
-    constructor(name, area) {
-        this.name = name;
-        this.area = area;
-    }
+
+function resetForm() {
+    document.getElementById("Vehicle").value = '';
+    document.getElementById("Course").value = '';
+    document.getElementById("cw/ccw").value = '';
+    selectedRow = null;
 }
 
-class HouseService {
-    static url = 'https://ancient-taiga-31359.herokuapp.com/api/houses';
-
-    static getAllHouses() {
-        return $.get(this.url);
-    }
-
-    static getHouse(house) {
-        return $.get(this.url + `/${id}`);
-    }
-
-    static createHouse(house) {
-        return $.post(this.url, house);
-    }
-
-    static updateHouse(house) {
-        return $.ajax({
-            url: this.url + `/${house._id}`,
-            dataType: 'json',
-            data: JSON.stringify(house),
-            contentType: 'application/json'
-            type: 'PUT'
-        });
-    }
-
-    static deleteHouse(id) {
-        return $.ajax({
-            url: this.url + `/${id}`,
-            type: 'DELETE'
-        });
-    }
-}
-
-class DOMManager {
-    static houses;
-
-    static getAllHouses() {
-        HouseService.getAllHouses().then(houses => this.render(houses));
-    }
-
-    static render(houses) {
-        this.houses = houses;
-        $('#app').empty();
-        for (let house of houses) {
-            $('#app').prepend(
-                `<div id="${house._id}" class="card">
-                    <div class="card-header">
-                        <h2>${house.name}</h2>
-                        <button class="btn btn-danger" onclick="DOMManager.deleteHouse('${house._id}')">Delete</button>
-                    </div>
-                    <div class="card-body">
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-sm">
-                                    <input type="text" id="${house._id}-room-name" class ="form-control" placeholder="Room Name">
-                    </div>
-                    <div class="col-sm">
-                        <input type="text" id="${house._id}-room-area" class ="form-control" placeholder="Room Area">
-                    </div>
-                </div>
-                <button id=${house._id}-new-room" onclick=DOMManager.addrRoom('${house._id}')" class="btn btn-primary form-control">Add</button>
-                </div>
-                </div>
-                </div><br>`
-            );
-            for (let room of house.rooms) {
-                return
-            }
-        }
-    }
-
-}
-
-DOMManager.getAllHouses();

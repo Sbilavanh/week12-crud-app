@@ -5,23 +5,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>House app</title>
-    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>Race Roster</title>
 </head>
 
-<body class="container">
-    <div id="new-house" class="jumbotron">
-        <h2>New House</h2>
-        <input type="text" id="new-house-name" class="form-control"> <br>
-        <button id="create-new-house" class="btn btn-primary form-control">Create</button>
-    </div>
+<link rel="stylesheet" href="crud.css">
 
-    <div id="app">
+<body>
+    <table>
+        <tr>
+            <td>
+                <form autocomplete="off" onsubmit="onFormSubmit()">
+                    <div>
+                        <label for="productCode">Vehicles</label>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div>
+                        <label for="product">Course</label>
+                        <input type="text" name="type" id="type">
+                    </div>
+                    <div>
+                        <label for="qty">cw/ccw</label>
+                        <input type="text" name="role" id="role">
+                    </div>
+                    <div>
+                    </div>
 
-    </div>
-    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+                    <div class="form_action--button">
+                        <input type="submit" value="Submit">
+                        <input type="reset" value="Reset">
+                    </div>
+                </form>
+
+            <td>
+                <table id="menuSelect">
+                    <thead>
+                        <tr>
+                            <th>Vehicles</th>
+                            <th>Course</th>
+                            <th>cw/ccw</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </td>
+            </td>
+        </tr>
+    </table>
+
+
     <script src="crud.js"></script>
-    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+
+
 </body>
 
 </html>
